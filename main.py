@@ -1,16 +1,16 @@
-import mysql.connector as connector
+import pymysql
+import query
 
-con = connector.connect(host="localhost",
-                  user = "root",
-                  password = "root",
-                  database = "classicmodels")
+conn = pymysql.connect(
+        host='localhost',
+        user='root',
+        password="root", 
+        db='classicmodels',
+        cursorclass=pymysql.cursors.DictCursor
+    )
 
-if con.is_connected():
-    print("Successfully connected....")
-    
-    
-cursor = con.cursor()
+cursor = conn.cursor()
 
+query.add_employee(conn,102, "zain", "Ahmed", "x01","zainahmed@gmail.com", 2, 1002,"President")
 
-    
 
