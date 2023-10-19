@@ -67,4 +67,9 @@ else :
     print("Thank you..")
 
 
-
+# add 10 employees
+def add_10_employee(conn):
+    for i in range(1,11):
+        query.add_employee(conn)
+        
+        
