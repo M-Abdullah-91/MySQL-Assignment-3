@@ -103,7 +103,3 @@ def did_not_captures_customer(conn):
   cursor.execute("SELECT distinct e.firstName from employees as e join customers as c on  e.employeeNumber != c.salesRepEmployeeNumber")
   cursor.fetchall()
   
-def employee_eith_sales(conn):
-  cursor = conn.cursor()
-  cursor.execute("")
-  cursor.fetchall()
