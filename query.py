@@ -1,4 +1,5 @@
 from datetime import date
+import json
 
 def add_employee(conn):
     employeeNumber = input("Enter employeeNumber: ") 
@@ -79,8 +80,30 @@ def show_stats(conn):
 def show_employees(conn):
   cursor = conn.cursor()
   cursor.execute("SELECT * FROM employees")
+  return cursor.fetchall()
+  
+def employees_city_and_country(conn):
+  cursor = conn.cursor()
+  cursor.execute("SELECT e.firstName, o.city, o.country, e.jobTitle from employees as e inner join offices as o on e.officeCode = o.officeCode" )
+  return cursor.fetchall()
   
   
-  
+def product_name(conn):
+  cursor = conn.cursor()
+  cursor.execute("select productName, buyprice,productLine as category from products")
+  return cursor.fetchall()
 
+def captures_customer(conn):
+  cursor = conn.cursor()
+  cursor.execute("")
+  cursor.fetchall("SELECT distinct e. lastName from employees as e join customers as c on  e.employeeNumber = c.salesRepEmployeeNumber")
+
+def did_not_captures_customer(conn):
+  cursor = conn.cursor()
+  cursor.execute("SELECT distinct e.firstName from employees as e join customers as c on  e.employeeNumber != c.salesRepEmployeeNumber")
+  cursor.fetchall()
   
+def employee_eith_sales(conn):
+  cursor = conn.cursor()
+  cursor.execute("")
+  cursor.fetchall()

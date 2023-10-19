@@ -1,5 +1,6 @@
 import pymysql
 import query
+import json
 
 
     
@@ -24,34 +25,46 @@ print("""
             press 8 to show all product name and price and product category name
             press 9 to show all employees name who captures the customer
             press 10 to show all employees who didn't suceed in capturing the customer
-            press 11 to show the employee names along with the sale they managed to capture by customer""")
+            Press 11 to exit \n""")
     
 user_input = int(input("Enter a Number: "))
     
 if user_input == 1:
     query.add_employee(conn)
+    
 elif user_input == 2:
     query.add_customer(conn)
+    
 elif user_input == 3:
-    pass
+    query.add_order(conn)
+    
 elif user_input == 4:
-    pass
+    query.add_payment_details(conn)
+    
 elif user_input == 5:
     query.show_stats(conn)
+    
 elif user_input == 6:
-    pass
+    employees = query.show_employees(conn)
+    print(json.dumps(employees, default=str, indent=4))
+    
 elif user_input == 7:
-    pass
+    employees_city_and_country = query.employees_city_and_country(conn)
+    print(json.dumps(employees_city_and_country, default=str, indent=4))
+    
 elif user_input == 8:
-    pass
+    product_name = query.product_name(conn)
+    print(json.dumps(product_name, default=str, indent=4))
+    
 elif user_input == 9:
-    pass
+    captures_customer = query.captures_customer(conn)
+    print(json.dumps(captures_customer, default=str, indent=4))
+    
 elif user_input == 10:
-    pass
-elif user_input == 11:
-    pass
+    did_not_capture_customer = query.did_not_captures_customer(conn)
+    print(json.dumps(did_not_capture_customer, default=str, indent=4))  
 else :
-    print("End..")
-# query.add_employee(conn,102, "zain", "Ahmed", "x01","zainahmed@gmail.com", 2, 1002,"President")
+    print("Thank you..")
+
 
 
