@@ -79,5 +79,8 @@ def show_stats(conn):
 def show_employees(conn):
   cursor = conn.cursor()
   cursor.execute("SELECT * FROM employees")
-  conn.commit()
+  
+  
+  
+
   
